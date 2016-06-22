@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="KkP-Ss-vf6">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <scenes>
+        <!--Programer Sunny-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="90" sectionHeaderHeight="50" sectionFooterHeight="100" translatesAutoresizingMaskIntoConstraints="NO" id="bD6-mb-Xaa">
+                                <rect key="frame" x="0.0" y="64" width="600" height="487"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="PSTableViewCell" rowHeight="90" id="Qat-BD-SwX" customClass="PSTableViewCell">
+                                        <rect key="frame" x="0.0" y="114" width="600" height="90"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Qat-BD-SwX" id="BLw-FE-RIr">
+                                            <rect key="frame" x="0.0" y="0.0" width="567" height="89.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="zoro.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="oBN-yP-1lD">
+                                                    <rect key="frame" x="21" y="15" width="60" height="60"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="60" id="IEd-yY-9RZ"/>
+                                                        <constraint firstAttribute="height" constant="60" id="Zv3-r5-aGb"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6wP-i9-lMb">
+                                                    <rect key="frame" x="101" y="35" width="42" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="oBN-yP-1lD" firstAttribute="leading" secondItem="BLw-FE-RIr" secondAttribute="leadingMargin" constant="13" id="2sP-ZP-XcR"/>
+                                                <constraint firstItem="oBN-yP-1lD" firstAttribute="centerY" secondItem="BLw-FE-RIr" secondAttribute="centerY" id="CvF-Yk-LAD"/>
+                                                <constraint firstItem="6wP-i9-lMb" firstAttribute="centerY" secondItem="BLw-FE-RIr" secondAttribute="centerY" id="SyQ-iX-XMF"/>
+                                                <constraint firstItem="6wP-i9-lMb" firstAttribute="leading" secondItem="oBN-yP-1lD" secondAttribute="trailing" constant="20" id="ivB-yH-uDA"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="contentLabel" destination="6wP-i9-lMb" id="D7r-8I-RDY"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="UgV-3G-I2t"/>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="2sz-tF-x20"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="bD6-mb-Xaa" secondAttribute="trailing" id="4aL-m5-3Sh"/>
+                            <constraint firstItem="bD6-mb-Xaa" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="9Ac-zx-epb"/>
+                            <constraint firstItem="bD6-mb-Xaa" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="TWa-dr-Zbg"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="bD6-mb-Xaa" secondAttribute="bottom" id="t6g-Fv-Tmb"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Programer Sunny" id="OZk-eG-vx6"/>
+                    <connections>
+                        <outlet property="tableView" destination="bD6-mb-Xaa" id="URZ-2f-0g3"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1823" y="389"/>
+        </scene>
+        <!--Reuse-->
+        <scene sceneID="kZU-x9-BV5">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="A3R-GA-IsP" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Reuse" badgeValue="1" id="qLQ-MG-xgn"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="nlP-xv-JDX">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="xF2-sJ-z83"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ccs-wi-Sdm" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1166" y="389"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="4il-mt-OAO">
+            <objects>
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="KkP-Ss-vf6" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" id="25j-g3-6Rd">
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="A3R-GA-IsP" kind="relationship" relationship="viewControllers" id="t8p-bx-eab"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Tap-85-gtt" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="522" y="389"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="zoro.jpg" width="373" height="210"/>
+    </resources>
+</document>
