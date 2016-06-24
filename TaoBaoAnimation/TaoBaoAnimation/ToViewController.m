@@ -17,6 +17,8 @@
 //屏幕高度
 #define SCREEN_HEIGHT [UIScreen mainScreen].bounds.size.height
 
+#define WS(weakSelf) __weak __typeof(&*self)weakSelf = self;
+#define SS(strongSelf) __strong typeof(&*weakSelf) strongSelf = weakSelf;
 
 @interface ToViewController ()
 
@@ -41,9 +43,11 @@
     [buyButton setTitle:@"立即购买" forState:UIControlStateNormal];
     [buyButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     buyButton.layer.cornerRadius = 2;
+    WS(weakSelf);
     [buyButton mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.right.mas_equalTo(self.Ps_ContentView.mas_right).with.offset(- 1);
-        make.bottom.mas_equalTo(self.Ps_ContentView.mas_bottom);
+        SS(strongSelf);
+        make.right.mas_equalTo(strongSelf.Ps_ContentView.mas_right).with.offset(- 1);
+        make.bottom.mas_equalTo(strongSelf.Ps_ContentView.mas_bottom);
         make.height.mas_equalTo(@50);
         make.width.mas_equalTo(120);
     }];
@@ -56,7 +60,7 @@
     shopCartButton.layer.cornerRadius = 2;
     [shopCartButton mas_makeConstraints:^(MASConstraintMaker *make) {
         make.right.mas_equalTo(buyButton.mas_left).with.offset(-2);
-        make.bottom.mas_equalTo(self.Ps_ContentView.mas_bottom);
+        make.bottom.mas_equalTo(weakSelf.Ps_ContentView.mas_bottom);
         make.height.mas_equalTo(@50);
         make.width.mas_equalTo(120);
     }];
@@ -75,13 +79,12 @@
         make.centerX.mas_equalTo(self.Ps_ContentView.mas_left).with.offset(70);
     }];
     self.headerImageView = headerImageView;
-    
     [buyButton bk_whenTapped:^{
-        [self ps_dismiss];
+        [weakSelf ps_dismiss];
     }];
     
     [shopCartButton bk_whenTapped:^{
-        [self shopCartAnimation];
+        [weakSelf shopCartAnimation];
     }];
     
     UILabel *advLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 200, 50)];
@@ -93,9 +96,10 @@
     advLabel.textColor = [UIColor blackColor];
     advLabel.font = [UIFont systemFontOfSize:20];
     [advLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        SS(strongSelf);
         make.width.mas_equalTo(@300);
-        make.centerX.mas_equalTo(self.Ps_ContentView.mas_centerX);
-        make.centerY.mas_equalTo(self.Ps_ContentView.mas_centerY);
+        make.centerX.mas_equalTo(strongSelf.Ps_ContentView.mas_centerX);
+        make.centerY.mas_equalTo(strongSelf.Ps_ContentView.mas_centerY);
     }];
 }
 
@@ -124,6 +128,9 @@
         [animationView removeFromSuperview];
         [self ps_dismiss];
     }];
+}
+- (void)dealloc {
+    NSLog(@"dealloc");
 }
 
 @end
