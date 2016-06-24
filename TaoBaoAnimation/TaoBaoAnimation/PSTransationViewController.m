@@ -69,7 +69,9 @@ UIImage* convertViewToImage(UIView* v){
     frame.origin.y += _Ps_ContentView.frame.size.height;
     
     [UIView animateWithDuration:0.3 delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
-        
+        [[self ps_enumSubViews] enumerateObjectsUsingBlock:^(UIView  *obj, NSUInteger idx, BOOL * stop) {
+            obj.alpha = 0;
+        }];
         //maskView隐藏
         [_Ps_maskView setAlpha:0.f];
         //popView下降
@@ -95,18 +97,22 @@ UIImage* convertViewToImage(UIView* v){
 - (void)ps_show
 {
     [[UIApplication sharedApplication].windows[0] addSubview:_Ps_ContentView];
-    
+    [_Ps_ContentView.subviews enumerateObjectsUsingBlock:^(__kindof UIView * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        obj.alpha = 0;
+    }];
     CGRect frame = _Ps_ContentView.frame;
     frame.origin.y = self.view.bounds.size.height - _Ps_ContentView.frame.size.height;
     
     [UIView animateWithDuration:0.3 delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
-        
+       
         [_Ps_backgroundImageView.layer setTransform:[self firstTransform]];
         
     } completion:^(BOOL finished) {
         
         [UIView animateWithDuration:0.3 delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
-            
+            [_Ps_ContentView.subviews enumerateObjectsUsingBlock:^(__kindof UIView * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+                obj.alpha = 1;
+            }];
             [_Ps_backgroundImageView.layer setTransform:[self secondTransform]];
             //显示maskView
             [_Ps_maskView setAlpha:0.5f];
@@ -121,6 +127,15 @@ UIImage* convertViewToImage(UIView* v){
     
 }
 
+- (NSMutableArray *)ps_enumSubViews {
+    NSMutableArray *array = [NSMutableArray array];
+    [_Ps_ContentView.subviews enumerateObjectsUsingBlock:^(__kindof UIView * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        if (obj.frame.origin.y < 0) {
+            [array addObject:obj];
+        }
+    }];
+    return array;
+}
 #pragma mark - transform
 - (CATransform3D)firstTransform{
     CATransform3D t1 = CATransform3DIdentity;
