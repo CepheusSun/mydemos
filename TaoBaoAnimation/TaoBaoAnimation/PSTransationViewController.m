@@ -28,7 +28,6 @@
     _Ps_backgroundImageView = [[UIImageView alloc] initWithFrame:self.view.bounds];
     _Ps_backgroundImageView.image = self.Ps_backgroundImage;
     [self.view addSubview:_Ps_backgroundImageView];
-//    _Ps_backgroundImageView.userInteractionEnabled = YES;
     [_Ps_backgroundImageView addGestureRecognizer:[[UIGestureRecognizer alloc] initWithTarget:self action:@selector(ps_close)]];
     //rootVC上的maskView
     _Ps_maskView = ({
@@ -37,6 +36,7 @@
         maskView.alpha = 0;
         maskView;
     });
+    self.view.userInteractionEnabled = NO;
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -120,7 +120,7 @@ UIImage* convertViewToImage(UIView* v){
             _Ps_ContentView.frame = CGRectMake(0, (1 - _Ps_scaleOfHeight) * SCREEN_HEIGHT, SCREEN_WIDTH, SCREEN_HEIGHT * _Ps_scaleOfHeight);
             
         } completion:^(BOOL finished) {
-            
+            self.view.userInteractionEnabled = YES;
         }];
         
     }];
